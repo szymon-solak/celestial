@@ -11,6 +11,7 @@ import registerServiceWorker from './registerServiceWorker'
 import Container from './components/container'
 import Header from './components/header'
 import Title from './components/title'
+import Link from './components/link'
 import {
   Nav,
   Tab
@@ -47,7 +48,9 @@ const App = () => (
     <BrowserRouter>
       <Container>
         <Header>
-          <Title>Celestial</Title>
+          <Title>
+            <Link exact to='/'>Celestial</Link>
+          </Title>
         </Header>
         <Route exact path='/' component={Login} />
         <Route path='/register' component={Register} />
