@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`
 
 const Section = styled.section`
   width: 100%;
@@ -6,6 +16,13 @@ const Section = styled.section`
   margin: 0 auto;
 
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  animation: ${fadeIn} .3s linear forwards;
 `
 
 export default Section

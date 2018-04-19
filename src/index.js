@@ -25,12 +25,23 @@ import tealDrop from './themes/teal-drop.js'
 // @TODO
 // Don't display if user is not logged in
 // Or Display only login/register tabs
-const Tabs = () => (
-  <Nav>
-    <Link to='/list'>Entries</Link>
-    <Link to='/add'>Add</Link>
-  </Nav>
-)
+const Tabs = (props) => {
+  if (!props.user) {
+    return (
+      <Nav>
+        <Link exact to='/'>Login</Link>
+        <Link to='/register'>Register</Link>
+      </Nav>
+    )
+  }
+
+  return (
+    <Nav>
+      <Link to='/list'>Entries</Link>
+      <Link to='/add'>Add</Link>
+    </Nav>
+  )
+}
 
 const App = () => (
   <ThemeProvider theme={tealDrop}>
