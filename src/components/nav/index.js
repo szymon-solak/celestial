@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Nav = styled.nav`
   width: 100%;
-  border-top: .05em solid ${props => props.theme.fontColor}
+  border-top: 1px solid ${props => props.theme.border}
 
   display: flex;
 `

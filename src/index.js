@@ -9,6 +9,8 @@ import { ThemeProvider } from 'styled-components'
 import registerServiceWorker from './registerServiceWorker'
 
 import Container from './components/container'
+import Header from './components/header'
+import Title from './components/title'
 import {
   Nav,
   Link
@@ -47,6 +49,9 @@ const App = () => (
   <ThemeProvider theme={tealDrop}>
     <BrowserRouter>
       <Container>
+        <Header>
+          <Title>Celestial</Title>
+        </Header>
         <Route exact path='/' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/list' component={List} />
