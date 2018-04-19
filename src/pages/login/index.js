@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Section from '../../components/section'
+import Title from '../../components/title'
 import {
   Form,
   Label,
@@ -10,6 +11,7 @@ import {
 
 const Login = (props) => (
   <Section>
+    <Title>Login</Title>
     <Form>
       <Label>Email:</Label>
       <Input type='email' placeholder='john@smith.com' />

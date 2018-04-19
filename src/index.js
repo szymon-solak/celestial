@@ -13,7 +13,7 @@ import Header from './components/header'
 import Title from './components/title'
 import {
   Nav,
-  Link
+  Tab
 } from './components/nav'
 
 import Login from './pages/login'
@@ -24,23 +24,20 @@ import Add from './pages/add'
 // Import default theme
 import tealDrop from './themes/teal-drop.js'
 
-// @TODO
-// Don't display if user is not logged in
-// Or Display only login/register tabs
-const Tabs = (props) => {
+const Navigation = (props) => {
   if (!props.user) {
     return (
       <Nav>
-        <Link exact to='/'>Login</Link>
-        <Link to='/register'>Register</Link>
+        <Tab exact to='/'>Login</Tab>
+        <Tab to='/register'>Register</Tab>
       </Nav>
     )
   }
 
   return (
     <Nav>
-      <Link to='/list'>Entries</Link>
-      <Link to='/add'>Add</Link>
+      <Tab to='/list'>Entries</Tab>
+      <Tab to='/add'>Add</Tab>
     </Nav>
   )
 }
@@ -56,7 +53,7 @@ const App = () => (
         <Route path='/register' component={Register} />
         <Route path='/list' component={List} />
         <Route path='/add' component={Add} />
-        <Tabs />
+        <Navigation />
       </Container>
     </BrowserRouter>
   </ThemeProvider>

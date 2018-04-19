@@ -8,7 +8,7 @@ const Nav = styled.nav`
   display: flex;
 `
 
-const Link = styled(NavLink)`
+const Tab = styled(NavLink)`
   position: relative;
   flex: 1;
   text-align: center;
@@ -64,5 +64,5 @@ const Link = styled(NavLink)`
 
 export {
   Nav,
-  Link
+  Tab
 }
