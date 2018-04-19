@@ -10,9 +10,10 @@ const Nav = styled.nav`
 
 const Link = styled(NavLink)`
   position: relative;
-  padding: 1em;
   flex: 1;
   text-align: center;
+  font-size: 1.4em;
+  padding: .6em;
 
   text-decoration: none;
 
@@ -20,11 +21,6 @@ const Link = styled(NavLink)`
   color: ${props => props.theme.fontColor}
 
   transition: all .11s ease-in-out;
-
-  &:hover {
-    background: ${props => props.theme.focus};
-    color: ${props => props.theme.fontFocus};
-  }
 
   &.active {
     color: ${props => props.theme.focus}
@@ -41,8 +37,28 @@ const Link = styled(NavLink)`
     transition: width .22s ease;
   }
 
-  &.active::before {
+  &:hover::before, &.active::before {
     width: 100%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 0px solid ${props => props.theme.border};
+    transition: all .11s ease-in-out;
+  }
+
+  &.active::after {
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid ${props => props.theme.border};
   }
 `
 
