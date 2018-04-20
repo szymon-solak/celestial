@@ -19,6 +19,7 @@ class Provider extends Component {
             loggedIn: true,
             user
           })
+
         } else {
           this.setState({
             loggedIn: false,

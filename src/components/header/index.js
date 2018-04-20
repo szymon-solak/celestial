@@ -1,13 +1,17 @@
-import styled from 'styled-components'
+import React from 'react'
 
-const Header = styled.header`
-  width: 100%;
-  padding: 1em;
+import HeaderContainer from './headerContainer'
+import Logout from './logout'
+import Title from '../title'
+import Link from '../link'
 
-  border-bottom: 1px solid ${props => props.theme.border};
-
-  display: flex;
-  justify-content: space-between;
-`
+const Header = () => (
+  <HeaderContainer>
+    <Title>
+      <Link exact to='/'>Celestial</Link>
+    </Title>
+    <Logout />
+  </HeaderContainer>
+)
 
 export default Header

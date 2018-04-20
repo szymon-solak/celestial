@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom'
 
 import firebase from '../../services/firebase'
 
+import { Context } from '../../context'
+
 import Section from '../../components/section'
 import Title from '../../components/title'
 import {
@@ -40,25 +42,6 @@ class Login extends Component {
         loggedIn: false
       })
     }
-
-    // Set up a observer for auth
-    this.unsubscribe = firebase
-      .auth()
-      .onAuthStateChanged((user) => {
-        if (user) {
-          this.setState({
-            loggedIn: true
-          })
-        } else {
-          this.setState({
-            loggedIn: false
-          })
-        }
-      })
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe()
   }
 
   handleChange(evt) {
@@ -93,14 +76,19 @@ class Login extends Component {
   }
 
   render() {
-    if (this.state.loggedIn) {
-      return (
-        <Redirect to='/list' />
-      )
-    }
-
     return (
       <Section>
+        <Context.Consumer>
+          {
+            (context) => {
+              if (context.loggedIn) {
+                return (
+                  <Redirect to='/list' />
+                )
+              }
+            }
+          }
+        </Context.Consumer>
         <Title>Login</Title>
         <Form onSubmit={this.handleSubmit}>
           <Label>Email:</Label>

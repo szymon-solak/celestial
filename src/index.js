@@ -10,8 +10,6 @@ import registerServiceWorker from './registerServiceWorker'
 
 import Container from './components/container'
 import Header from './components/header'
-import Title from './components/title'
-import Link from './components/link'
 import Navigation from './components/navigation'
 
 import Login from './pages/login'
@@ -26,22 +24,18 @@ import { Provider } from './context'
 
 const App = () => (
   <ThemeProvider theme={tealDrop}>
-    <BrowserRouter>
-      <Container>
-        <Provider>
-          <Header>
-            <Title>
-              <Link exact to='/'>Celestial</Link>
-            </Title>
-          </Header>
+    <Provider>
+      <BrowserRouter>
+        <Container>
+          <Header />
           <Route exact path='/' component={Login} />
           <Route path='/register' component={Register} />
           <Route path='/list' component={List} />
           <Route path='/add' component={Add} />
           <Navigation />
-        </Provider>
-      </Container>
-    </BrowserRouter>
+        </Container>
+      </BrowserRouter>
+    </Provider>
   </ThemeProvider>
 )
 
