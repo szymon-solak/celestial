@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {
   BrowserRouter,
-  Route,
+  Route
 } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
@@ -11,6 +11,7 @@ import registerServiceWorker from './registerServiceWorker'
 import Container from './components/container'
 import Header from './components/header'
 import Navigation from './components/navigation'
+import PrivateRoute from './components/private-route'
 
 import Login from './pages/login'
 import Register from './pages/register'
@@ -30,8 +31,8 @@ const App = () => (
           <Header />
           <Route exact path='/' component={Login} />
           <Route path='/register' component={Register} />
-          <Route path='/list' component={List} />
-          <Route path='/add' component={Add} />
+          <PrivateRoute path='/list' component={List} />
+          <PrivateRoute path='/add' component={Add} />
           <Navigation />
         </Container>
       </BrowserRouter>
