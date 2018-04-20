@@ -22,20 +22,24 @@ import Add from './pages/add'
 // Import default theme
 import tealDrop from './themes/teal-drop.js'
 
+import { Provider } from './context'
+
 const App = () => (
   <ThemeProvider theme={tealDrop}>
     <BrowserRouter>
       <Container>
-        <Header>
-          <Title>
-            <Link exact to='/'>Celestial</Link>
-          </Title>
-        </Header>
-        <Route exact path='/' component={Login} />
-        <Route path='/register' component={Register} />
-        <Route path='/list' component={List} />
-        <Route path='/add' component={Add} />
-        <Navigation />
+        <Provider>
+          <Header>
+            <Title>
+              <Link exact to='/'>Celestial</Link>
+            </Title>
+          </Header>
+          <Route exact path='/' component={Login} />
+          <Route path='/register' component={Register} />
+          <Route path='/list' component={List} />
+          <Route path='/add' component={Add} />
+          <Navigation />
+        </Provider>
       </Container>
     </BrowserRouter>
   </ThemeProvider>
