@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
+
+import firebase from '../../services/firebase'
 
 import Section from '../../components/section'
 import Title from '../../components/title'
@@ -8,29 +10,114 @@ import {
   Input,
   Submit
 } from '../../components/form'
+import Spinner from '../../components/loading/spinner'
+import ErrorBox from '../../components/error'
 
-const Register = (props) => (
-  <Section>
-    <Title>Register</Title>
-    <Form>
-      <Label>Email:</Label>
-      <Input
-        type='email'
-        placeholder='john@smith.com'
-      />
-      <Label>Password:</Label>
-      <Input
-        type='password'
-        placeholder='*****'
-      />
-      <Label>Confirm password:</Label>
-      <Input
-        type='password'
-        placeholder='*****'
-      />
-      <Submit value='Register'/>
-    </Form>
-  </Section>
-)
+class Register extends Component {
+  constructor() {
+    super()
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleError = this.handleError.bind(this)
+  }
+
+  state = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+    error: null,
+    loading: false
+  }
+
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
+
+  handleSubmit(evt) {
+    evt.preventDefault()
+
+    const {
+      email,
+      password,
+      confirmPassword
+    } = this.state
+
+    if (password !== confirmPassword) {
+      this.handleError({
+        message: 'Passwords do not match, please try entering them again.'
+      })
+      return
+    }
+
+    this.setState({
+      loading: true
+    })
+
+    // On success user is signed in automatically
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(this.handleError)
+
+    // Redirect to home page
+    this.props.history.push('/')
+  }
+
+  handleError({ message }) {
+    this.setState({
+      error: message,
+      loading: false
+    })
+  }
+
+  render() {
+    return (
+      <Section>
+        <Title>Register</Title>
+        <Form onSubmit={this.handleSubmit}>
+          <Label>Email:</Label>
+          <Input
+            name='email'
+            type='email'
+            placeholder='john@smith.com'
+            onChange={this.handleChange}
+            value={this.state.email}
+          />
+          <Label>Password:</Label>
+          <Input
+            name='password'
+            type='password'
+            placeholder='*****'
+            onChange={this.handleChange}
+            value={this.state.password}
+          />
+          <Label>Confirm password:</Label>
+          <Input
+            name='confirmPassword'
+            type='password'
+            placeholder='*****'
+            onChange={this.handleChange}
+            value={this.state.confirmPassword}
+          />
+          {
+            (this.state.error)
+              ? <ErrorBox>
+                {this.state.error}
+              </ErrorBox>
+              : null
+          }
+          {
+            (this.state.loading)
+              ? <Spinner />
+              : <Submit value='Register'/>
+          }
+        </Form>
+      </Section>
+    )
+  }
+}
 
 export default Register
