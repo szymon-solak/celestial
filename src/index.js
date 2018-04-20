@@ -12,10 +12,7 @@ import Container from './components/container'
 import Header from './components/header'
 import Title from './components/title'
 import Link from './components/link'
-import {
-  Nav,
-  Tab
-} from './components/nav'
+import Navigation from './components/navigation'
 
 import Login from './pages/login'
 import Register from './pages/register'
@@ -24,24 +21,6 @@ import Add from './pages/add'
 
 // Import default theme
 import tealDrop from './themes/teal-drop.js'
-
-const Navigation = (props) => {
-  if (!props.user) {
-    return (
-      <Nav>
-        <Tab exact to='/'>Login</Tab>
-        <Tab to='/register'>Register</Tab>
-      </Nav>
-    )
-  }
-
-  return (
-    <Nav>
-      <Tab to='/list'>Entries</Tab>
-      <Tab to='/add'>Add</Tab>
-    </Nav>
-  )
-}
 
 const App = () => (
   <ThemeProvider theme={tealDrop}>

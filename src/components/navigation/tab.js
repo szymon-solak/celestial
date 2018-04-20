@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
-const Nav = styled.nav`
-  width: 100%;
-  border-top: 1px solid ${props => props.theme.border}
-
-  display: flex;
-`
-
 const Tab = styled(NavLink)`
   position: relative;
   flex: 1;
@@ -63,7 +56,4 @@ const Tab = styled(NavLink)`
   }
 `
 
-export {
-  Nav,
-  Tab
-}
+export default Tab

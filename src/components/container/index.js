@@ -10,7 +10,7 @@ const Container = styled.main`
   align-items: center;
 
   background: ${props => props.theme.background};
-  color: ${props => props.theme.fontColor}
+  color: ${props => props.theme.fontColor};
 `
 
 export default Container
