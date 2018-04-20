@@ -13,7 +13,9 @@ const fadeIn = keyframes`
 const Section = styled.section`
   width: 100%;
   max-width: 760px;
-  margin: 0 auto;
+  margin: 0em auto;
+
+  padding: 0 1.2em;
 
   flex: 1;
 
