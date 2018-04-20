@@ -21,10 +21,12 @@ const Register = (props) => (
       <Label>Password:</Label>
       <Input
         type='password'
+        placeholder='*****'
       />
       <Label>Confirm password:</Label>
       <Input
         type='password'
+        placeholder='*****'
       />
       <Submit value='Register'/>
     </Form>

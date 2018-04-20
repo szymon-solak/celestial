@@ -31,14 +31,15 @@ const Tab = styled(NavLink)`
     position: absolute;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 100%;
+    transform: scale(0);
     height: 2px;
     background: ${props => props.theme.border}
-    transition: width .22s ease;
+    transition: transform .22s ease;
   }
 
   &:hover::before, &.active::before {
-    width: 100%;
+    transform: scale(1);
   }
 
   &::after {
