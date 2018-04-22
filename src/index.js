@@ -17,6 +17,7 @@ import Login from './pages/login'
 import Register from './pages/register'
 import List from './pages/list'
 import Add from './pages/add'
+import Account from './pages/account'
 
 // Import default theme
 import tealDrop from './themes/teal-drop.js'
@@ -33,6 +34,7 @@ const App = () => (
           <Route path='/register' component={Register} />
           <PrivateRoute path='/list' component={List} />
           <PrivateRoute path='/add' component={Add} />
+          <PrivateRoute path='/account' component={Account} />
           <Navigation />
         </Container>
       </BrowserRouter>

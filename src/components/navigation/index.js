@@ -22,6 +22,7 @@ const Navigation = () => (
           <Nav>
             <Tab to='/list'>Entries</Tab>
             <Tab to='/add'>Add</Tab>
+            <Tab to='/account'>Account</Tab>
           </Nav>
         )
       }
