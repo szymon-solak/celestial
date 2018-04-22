@@ -60,10 +60,11 @@ class Register extends Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        // Redirect to home page
+        this.props.history.push('/')
+      })
       .catch(this.handleError)
-
-    // Redirect to home page
-    this.props.history.push('/')
   }
 
   handleError({ message }) {
