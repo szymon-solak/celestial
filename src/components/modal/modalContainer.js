@@ -11,14 +11,16 @@ const popUp = keyframes`
 `
 
 const ModalContainer = styled.div`
-  width: 100%;
+  width: 90%;
   max-width: 760px;
-  min-height: 120px;
+  min-height: 200px;
+  padding: 0 1em 1em 1em;
 
   background: ${props => props.theme.background};
-  border: 2px solid ${props => props.theme.border};
+  border: 1px solid ${props => props.theme.border};
+  border-radius: .1em;
 
-  animation: ${popUp} .3s linear forwards;
+  animation: ${popUp} .2s ease-in-out forwards;
 `
 
 export default ModalContainer
