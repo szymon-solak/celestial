@@ -14,8 +14,12 @@ const Section = styled.section`
   width: 100%;
   max-width: 760px;
   margin: 0em auto;
-
   padding: 0 1.2em;
+
+  // Compensate for navigation
+  margin-bottom: 3.8em;
+
+  overflow-y: auto;
 
   flex: 1;
 

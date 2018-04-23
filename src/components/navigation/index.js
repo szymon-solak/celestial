@@ -14,7 +14,7 @@ const Navigation = () => (
             <Nav>
               <Tab exact to='/'>Login</Tab>
               <Tab to='/register'>Register</Tab>
-          </Nav>
+            </Nav>
           )
         }
 

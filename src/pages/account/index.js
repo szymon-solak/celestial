@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 import Section from '../../components/section'
+import Text from '../../components/text'
 import Modal from '../../components/modal'
 import Button from '../../components/button'
 import {
   List,
   ListItem
 } from '../../components/list'
-import Text from '../../components/text'
 
 class Account extends Component {
   constructor() {
@@ -39,19 +39,46 @@ class Account extends Component {
           onClose={this.handleModalClose}
         >
         </Modal>
-        <List title='Settings'>
+        <List title='Profile'>
           <ListItem>
-            <Button danger>Danger button</Button>
+            <div>
+              <Text>Display name:</Text>
+              <Text bold>SomeUserName</Text>
+            </div>
+            <Button>Change</Button>
           </ListItem>
           <ListItem>
-            <Text>Hi</Text>
+            <div>
+              <Text>Email:</Text>
+              <Text bold>user@service.com</Text>
+            </div>
+            <Button>Change</Button>
           </ListItem>
           <ListItem>
-            <Text>Hi 2</Text>
+            <Text>Password</Text>
+            <Button>Change</Button>
           </ListItem>
           <ListItem>
-            <Text>Some text and a button</Text>
-            <Button success>Danger button</Button>
+            <Text>Image here (no tag yet)</Text>
+            <Button>Change</Button>
+          </ListItem>
+          <ListItem>
+            <Text>Confirm e-mail address</Text>
+            <Button>Send confirmation mail</Button>
+          </ListItem>
+          <ListItem>
+            <Text>Delete my account</Text>
+            <Button danger>Delete</Button>
+          </ListItem>
+        </List>
+        <List title='Data'>
+          <ListItem>
+            <Text>Export my entries</Text>
+            <Button>Export</Button>
+          </ListItem>
+          <ListItem>
+            <Text>Import entries</Text>
+            <Button>Import</Button>
           </ListItem>
         </List>
       </Section>

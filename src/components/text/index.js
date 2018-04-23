@@ -6,6 +6,8 @@ const Text = styled.p`
 
   display: flex;
   align-items: center;
+
+  font-weight: ${props => props.bold ? 'bold' : 'normal'};
 `
 
 export default Text

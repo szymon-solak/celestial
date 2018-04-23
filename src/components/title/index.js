@@ -5,6 +5,9 @@ const Title = styled.h1`
   text-transform: uppercase;
   color: ${props => props.theme.focus};
   width: 100%;
+
+  display: flex;
+  align-items: center;
 `
 
 export default Title
