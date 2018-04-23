@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
+import './globalStyles'
 import registerServiceWorker from './registerServiceWorker'
 
 import Container from './components/container'

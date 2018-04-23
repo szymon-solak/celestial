@@ -7,6 +7,7 @@ import {
   List,
   ListItem
 } from '../../components/list'
+import Text from '../../components/text'
 
 class Account extends Component {
   constructor() {
@@ -43,13 +44,13 @@ class Account extends Component {
             <Button danger>Danger button</Button>
           </ListItem>
           <ListItem>
-            <h1>Hi</h1>
+            <Text>Hi</Text>
           </ListItem>
           <ListItem>
-            <h1>Hi 2</h1>
+            <Text>Hi 2</Text>
           </ListItem>
           <ListItem>
-            <h1>Some text and a button</h1>
+            <Text>Some text and a button</Text>
             <Button success>Danger button</Button>
           </ListItem>
         </List>
