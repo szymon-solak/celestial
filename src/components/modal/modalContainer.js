@@ -22,7 +22,7 @@ const ModalContainer = styled.div`
   border: 1px solid ${props => props.theme.border};
   border-radius: .1em;
 
-  animation: ${popUp} .3s ease-in-out forwards;
+  animation: ${popUp} .3s ease-in-out;
 `
 
 export default ModalContainer
