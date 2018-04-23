@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Section from '../../components/section'
 import Modal from '../../components/modal'
+import Button from '../../components/button'
 
 class Account extends Component {
   constructor() {
@@ -34,6 +35,9 @@ class Account extends Component {
           onClose={this.handleModalClose}
         >
           <h1>Inside Stuff</h1>
+          <Button danger>Danger button</Button>
+          <Button>Classic button</Button>
+          <Button success>Success button</Button>
         </Modal>
       </Section>
     )
