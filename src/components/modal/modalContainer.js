@@ -2,11 +2,13 @@ import styled, { keyframes } from 'styled-components'
 
 const popUp = keyframes`
   from {
-    transform: scale(0);
+    transform: translateY(20%);
+    opacity: 0;
   }
 
   to {
-    transform: scale(1);
+    transform: translateY(0);
+    opacity: 1;
   }
 `
 
@@ -20,7 +22,7 @@ const ModalContainer = styled.div`
   border: 1px solid ${props => props.theme.border};
   border-radius: .1em;
 
-  animation: ${popUp} .2s ease-in-out forwards;
+  animation: ${popUp} .3s ease-in-out forwards;
 `
 
 export default ModalContainer
