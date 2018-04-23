@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 import Section from '../../components/section'
 import Modal from '../../components/modal'
 import Button from '../../components/button'
+import {
+  List,
+  ListItem
+} from '../../components/list'
 
 class Account extends Component {
   constructor() {
@@ -14,8 +18,8 @@ class Account extends Component {
   state = {
     error: null,
     success: false,
-    showModal: true,
-    modalTitle: 'Test'
+    showModal: false,
+    modalTitle: ''
   }
 
   handleModalClose() {
@@ -34,10 +38,21 @@ class Account extends Component {
           onClose={this.handleModalClose}
         >
         </Modal>
-        <Button danger>Danger button</Button>
-        <Button>Classic button</Button>
-        <Button success>Success button</Button>
-        <Button loading>Loading button</Button>
+        <List title='Settings'>
+          <ListItem>
+            <Button danger>Danger button</Button>
+          </ListItem>
+          <ListItem>
+            <h1>Hi</h1>
+          </ListItem>
+          <ListItem>
+            <h1>Hi 2</h1>
+          </ListItem>
+          <ListItem>
+            <h1>Some text and a button</h1>
+            <Button success>Danger button</Button>
+          </ListItem>
+        </List>
       </Section>
     )
   }
