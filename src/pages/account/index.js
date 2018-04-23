@@ -38,6 +38,7 @@ class Account extends Component {
           <Button danger>Danger button</Button>
           <Button>Classic button</Button>
           <Button success>Success button</Button>
+          <Button loading>Loading button</Button>
         </Modal>
       </Section>
     )
