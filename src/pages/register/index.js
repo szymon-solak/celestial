@@ -107,7 +107,7 @@ class Register extends Component {
             (this.state.error)
               ? <ErrorBox>
                 {this.state.error}
-              </ErrorBox>
+                </ErrorBox>
               : null
           }
           {
