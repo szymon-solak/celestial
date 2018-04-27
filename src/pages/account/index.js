@@ -9,6 +9,10 @@ import {
 } from '../../components/list'
 import FormModal from './components/formModal'
 
+import { Context } from '../../context'
+
+import firebase from '../../services/firebase'
+
 class Account extends Component {
   constructor() {
     super()
@@ -29,8 +33,14 @@ class Account extends Component {
       onClose={this.handleModalClose}
       label='New display name:'
       handleSubmit={async (name) => {
-        console.log(name)
-        return name
+        const user = firebase.auth().currentUser
+        return user
+          .updateProfile({
+            displayName: name
+          })
+          .then(() => {
+            this.handleModalClose()
+          })
       }}
     />
   )
@@ -75,7 +85,13 @@ class Account extends Component {
           <ListItem>
             <div>
               <Text>Display name:</Text>
-              <Text bold>SomeUserName</Text>
+              <Context.Consumer>
+                {
+                  (context) => (
+                    <Text bold>{context.user.displayName}</Text>
+                  )
+                }
+              </Context.Consumer>
             </div>
             <Button
               onClick={() => this.showModal(this.displayNameModal)}
@@ -86,7 +102,13 @@ class Account extends Component {
           <ListItem>
             <div>
               <Text>Email:</Text>
-              <Text bold>user@service.com</Text>
+              <Context.Consumer>
+                {
+                  (context) => (
+                    <Text bold>{context.user.email}</Text>
+                  )
+                }
+              </Context.Consumer>
             </div>
             <Button
               onClick={() => this.showModal(this.emailModal)}
