@@ -118,29 +118,29 @@ class Account extends Component {
           </ListItem>
           <ListItem>
             <Text>Password</Text>
-            <Button>Change</Button>
+            <Button disabled>Change</Button>
           </ListItem>
           <ListItem>
             <Text>Image here (no tag yet)</Text>
-            <Button>Change</Button>
+            <Button disabled>Change</Button>
           </ListItem>
           <ListItem>
             <Text>Confirm e-mail address</Text>
-            <Button>Send confirmation mail</Button>
+            <Button disabled>Send confirmation mail</Button>
           </ListItem>
           <ListItem>
             <Text>Delete my account</Text>
-            <Button danger>Delete</Button>
+            <Button danger disabled>Delete</Button>
           </ListItem>
         </List>
         <List title='Data'>
           <ListItem>
             <Text>Export my entries</Text>
-            <Button>Export</Button>
+            <Button disabled>Export</Button>
           </ListItem>
           <ListItem>
             <Text>Import entries</Text>
-            <Button>Import</Button>
+            <Button disabled>Import</Button>
           </ListItem>
         </List>
       </Section>

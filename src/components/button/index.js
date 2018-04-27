@@ -8,9 +8,11 @@ import DisabledBtn from './disabledBtn'
 const Button = (props) => {
 
   if (props.disabled) {
-    <DisabledBtn {...props}>
-      {props.children}
-    </DisabledBtn>
+    return (
+      <DisabledBtn {...props}>
+        {props.children}
+      </DisabledBtn>
+    )
   }
 
   if (props.danger) {
