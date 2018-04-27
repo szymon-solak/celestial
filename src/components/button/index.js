@@ -1,10 +1,18 @@
 import React from 'react'
 
 import Base from './base'
-import DangerBtn from './dangerBtn';
-import SuccessBtn from './successBtn';
+import DangerBtn from './dangerBtn'
+import SuccessBtn from './successBtn'
+import DisabledBtn from './disabledBtn'
 
 const Button = (props) => {
+
+  if (props.disabled) {
+    <DisabledBtn {...props}>
+      {props.children}
+    </DisabledBtn>
+  }
+
   if (props.danger) {
     return (
       <DangerBtn {...props}>
