@@ -13,17 +13,35 @@ import { Context } from '../../context'
 
 import firebase from '../../services/firebase'
 
+const reauthenticate = (password) => {
+  const user = firebase.auth().currentUser
+
+  const credential = firebase.auth.EmailAuthProvider.credential(
+    user.email,
+    password
+  )
+
+  return user.reauthenticateWithCredential(credential)
+}
+
 class Account extends Component {
   constructor() {
     super()
 
     this.showModal = this.showModal.bind(this)
     this.handleModalClose = this.handleModalClose.bind(this)
+    this.sendVerificationMail = this.sendVerificationMail.bind(this)
   }
 
   state = {
     showModal: false,
     modalToShow: null,
+    buttons: {
+      verification: {
+        loading: false,
+        success: false
+      }
+    }
   }
 
   displayNameModal = () => (
@@ -34,13 +52,9 @@ class Account extends Component {
       label='New display name:'
       handleSubmit={async (name) => {
         const user = firebase.auth().currentUser
-        return user
-          .updateProfile({
-            displayName: name
-          })
-          .then(() => {
-            this.handleModalClose()
-          })
+        return user.updateProfile({
+          displayName: name
+        })
       }}
     />
   )
@@ -52,9 +66,31 @@ class Account extends Component {
       onClose={this.handleModalClose}
       label='New email address:'
       type='email'
+      requireReauth
+      reauthenticate={reauthenticate}
       handleSubmit={async (email) => {
-        console.log(email)
-        return email
+        const user = firebase.auth().currentUser
+
+        return user.updateEmail(email)
+      }}
+    />
+  )
+
+  passwordModal = () => (
+    <FormModal
+      show={this.state.showModal}
+      title='Change password'
+      onClose={this.handleModalClose}
+      label='New password:'
+      type='password'
+      confirm
+      confirmLabel='Confirm password:'
+      requireReauth
+      reauthenticate={reauthenticate}
+      handleSubmit={async (password) => {
+        const user = firebase.auth().currentUser
+
+        return user.updatePassword(password)
       }}
     />
   )
@@ -71,6 +107,41 @@ class Account extends Component {
       showModal: false,
       modalToShow: null,
     })
+  }
+
+  sendVerificationMail() {
+    const user = firebase.auth().currentUser
+
+    this.setState({
+      buttons: {
+        verification: {
+          loading: true
+        }
+      }
+    })
+
+    user
+      .sendEmailVerification()
+      .then(() => {
+        this.setState({
+          buttons: {
+            verification: {
+              loading: false,
+              success: true
+            }
+          }
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+        this.setState({
+          buttons: {
+            verification: {
+              loading: false
+            }
+          }
+        })
+      })
   }
 
   render() {
@@ -118,7 +189,11 @@ class Account extends Component {
           </ListItem>
           <ListItem>
             <Text>Password</Text>
-            <Button disabled>Change</Button>
+            <Button
+              onClick={() => this.showModal(this.passwordModal)}
+            >
+              Change
+            </Button>
           </ListItem>
           <ListItem>
             <Text>Image here (no tag yet)</Text>
@@ -126,7 +201,27 @@ class Account extends Component {
           </ListItem>
           <ListItem>
             <Text>Confirm e-mail address</Text>
-            <Button disabled>Send confirmation mail</Button>
+            <Context.Consumer>
+              {
+                (context) => {
+                  if (!context.user.emailVerified) {
+                    return (
+                      <Button
+                        onClick={this.sendVerificationMail}
+                        loading={this.state.buttons.verification.loading}
+                        success={this.state.buttons.verification.success}
+                      >
+                        Send confirmation mail
+                      </Button>
+                    )
+                  }
+
+                  return (
+                    <Button success>Send confirmation email</Button>
+                  )
+                }
+              }
+            </Context.Consumer>
           </ListItem>
           <ListItem>
             <Text>Delete my account</Text>

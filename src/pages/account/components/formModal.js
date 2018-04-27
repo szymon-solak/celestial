@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import Modal from '../../../components/modal'
 import {
@@ -20,28 +20,41 @@ class FormModal extends Component {
 
   state = {
     value: '',
+    confirm: '',
+    password: '',
     loading: false,
     error: null,
   }
 
   handleChange(evt) {
     this.setState({
-      value: evt.target.value
+      [evt.target.name]: evt.target.value
     })
   }
 
-  handleSubmit(evt) {
+  async handleSubmit(evt) {
     evt.preventDefault()
+
+    if (this.props.confirm) {
+      if (this.state.value !== this.state.confirm) {
+        this.handleError({
+          message: 'The inputs do not match. Please try typing them again.'
+        })
+        return
+      }
+    }
 
     this.setState({
       loading: true
     })
 
-    this.props
-      .handleSubmit(this.state.value)
-      .catch(this.handleError)
-
-    evt.target.reset()
+    try {
+      await this.props.reauthenticate(this.state.password)
+      await this.props.handleSubmit(this.state.value)
+      this.props.onClose()
+    } catch (err) {
+      this.handleError(err)
+    }
   }
 
   handleError({ message }) {
@@ -66,12 +79,43 @@ class FormModal extends Component {
             : null
         }
         <Form onSubmit={this.handleSubmit}>
+          {
+            (this.props.requireReauth)
+              ? (
+                  <Fragment>
+                    <Label>Please enter your current password:</Label>
+                    <Input
+                      name='password'
+                      type='password'
+                      onChange={this.handleChange}
+                      value={this.state.password}
+                    />
+                  </Fragment>
+                )
+              : null
+          }
           <Label>{this.props.label}</Label>
           <Input
+            name='value'
             type={this.props.type || 'text'}
             onChange={this.handleChange}
             value={this.state.value}
           />
+          {
+            (this.props.confirm)
+              ? (
+                  <Fragment>
+                    <Label>{this.props.confirmLabel}</Label>
+                    <Input
+                      name='confirm'
+                      type={this.props.type || 'text'}
+                      onChange={this.handleChange}
+                      value={this.state.confirm}
+                    />
+                  </Fragment>
+                )
+              : null
+          }
           <Button
             type='submit'
             loading={this.state.loading}
