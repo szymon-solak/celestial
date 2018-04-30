@@ -57,6 +57,8 @@ class FormModal extends Component {
 
       this.setState({
         value: '',
+        password: '',
+        confirm: '',
         error: null,
         loading: false
       })

@@ -10,6 +10,7 @@ import {
 import FormModal from './components/formModal'
 
 import ChangeDisplayName from './components/changeDisplayName'
+import ChangeEmail from './components/changeEmail'
 
 import { Context } from '../../context'
 
@@ -45,23 +46,6 @@ class Account extends Component {
       }
     }
   }
-
-  emailModal = () => (
-    <FormModal
-      show={this.state.showModal}
-      title='Change e-mail address'
-      onClose={this.handleModalClose}
-      label='New email address:'
-      type='email'
-      requireReauth
-      reauthenticate={reauthenticate}
-      handleSubmit={async (email) => {
-        const user = firebase.auth().currentUser
-
-        return user.updateEmail(email)
-      }}
-    />
-  )
 
   passwordModal = () => (
     <FormModal
@@ -144,21 +128,7 @@ class Account extends Component {
             <ChangeDisplayName />
           </ListItem>
           <ListItem>
-            <div>
-              <Text>Email:</Text>
-              <Context.Consumer>
-                {
-                  (context) => (
-                    <Text bold>{context.user.email}</Text>
-                  )
-                }
-              </Context.Consumer>
-            </div>
-            <Button
-              onClick={() => this.showModal(this.emailModal)}
-            >
-              Change
-            </Button>
+            <ChangeEmail />
           </ListItem>
           <ListItem>
             <Text>Password</Text>
