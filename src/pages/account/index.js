@@ -9,6 +9,8 @@ import {
 } from '../../components/list'
 import FormModal from './components/formModal'
 
+import ChangeDisplayName from './components/changeDisplayName'
+
 import { Context } from '../../context'
 
 import firebase from '../../services/firebase'
@@ -43,21 +45,6 @@ class Account extends Component {
       }
     }
   }
-
-  displayNameModal = () => (
-    <FormModal
-      show={this.state.showModal}
-      title='Change display name'
-      onClose={this.handleModalClose}
-      label='New display name:'
-      handleSubmit={async (name) => {
-        const user = firebase.auth().currentUser
-        return user.updateProfile({
-          displayName: name
-        })
-      }}
-    />
-  )
 
   emailModal = () => (
     <FormModal
@@ -154,21 +141,7 @@ class Account extends Component {
         }
         <List title='Profile'>
           <ListItem>
-            <div>
-              <Text>Display name:</Text>
-              <Context.Consumer>
-                {
-                  (context) => (
-                    <Text bold>{context.user.displayName}</Text>
-                  )
-                }
-              </Context.Consumer>
-            </div>
-            <Button
-              onClick={() => this.showModal(this.displayNameModal)}
-            >
-              Change
-            </Button>
+            <ChangeDisplayName />
           </ListItem>
           <ListItem>
             <div>

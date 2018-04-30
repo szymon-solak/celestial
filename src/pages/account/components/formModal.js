@@ -49,8 +49,18 @@ class FormModal extends Component {
     })
 
     try {
-      await this.props.reauthenticate(this.state.password)
+      if (this.props.requireReauth) {
+        await this.props.reauthenticate(this.state.password)
+      }
+
       await this.props.handleSubmit(this.state.value)
+
+      this.setState({
+        value: '',
+        error: null,
+        loading: false
+      })
+
       this.props.onClose()
     } catch (err) {
       this.handleError(err)
