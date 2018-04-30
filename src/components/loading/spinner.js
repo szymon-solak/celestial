@@ -30,10 +30,10 @@ const Spinner = styled.div`
 
     border-left: 4px solid ${props => props.theme.border};
     border-top: 4px solid ${props => props.theme.border};
-    border-right: 4px solid grey;
-    border-bottom: 4px solid grey;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
 
-    animation: ${spin} 1.4s linear infinite;
+    animation: ${spin} .6s ease infinite;
   }
 `
 
