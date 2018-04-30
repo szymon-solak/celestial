@@ -8,22 +8,16 @@ import { Context } from '../../../context'
 import firebase from '../../../services/firebase'
 
 class VerifyEmail extends Component {
-  constructor() {
-    super()
-
-    this.sendVerificationMail = this.sendVerificationMail.bind(this)
-  }
-
   state = {
     loading: false,
-    success: false
+    success: false,
   }
 
-  sendVerificationMail() {
+  sendVerificationMail = () => {
     const user = firebase.auth().currentUser
 
     this.setState({
-      loading: true
+      loading: true,
     })
 
     user
@@ -31,12 +25,12 @@ class VerifyEmail extends Component {
       .then(() => {
         this.setState({
           loading: false,
-          success: true
+          success: true,
         })
       })
-      .catch((err) => {
+      .catch(() => {
         this.setState({
-          loading: false
+          loading: false,
         })
       })
   }

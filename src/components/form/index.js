@@ -25,7 +25,7 @@ const Input = styled.input`
 `
 
 const Submit = styled.input.attrs({
-  type: 'submit'
+  type: 'submit',
 })`
   width: 100%;
   padding: .6em;

@@ -12,7 +12,7 @@ import firebase from '../../../services/firebase'
 const ChangePassword = ({
   show,
   showModal,
-  handleModalClose
+  handleModalClose,
 }) => (
   <Fragment>
     <FormModal

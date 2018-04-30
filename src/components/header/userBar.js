@@ -12,7 +12,7 @@ const UserBar = () => (
     {
       (context) => {
         if (!context.loggedIn) return null
-        
+
         return (
           <Fragment>
             <Image

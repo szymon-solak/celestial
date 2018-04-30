@@ -14,7 +14,7 @@ import firebase from '../../../services/firebase'
 const ChangeEmail = ({
   show,
   showModal,
-  handleModalClose
+  handleModalClose,
 }) => (
   <Fragment>
     <FormModal
@@ -35,7 +35,7 @@ const ChangeEmail = ({
       <Text>Email:</Text>
       <Context.Consumer>
         {
-          (context) => (
+          context => (
             <Text bold>{context.user.email}</Text>
           )
         }

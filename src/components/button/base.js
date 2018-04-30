@@ -78,7 +78,7 @@ const Base = styled.button`
     opacity: 0.85;
   }
 
-  ${props => props.loading ? loadingMixin : null};
+  ${props => (props.loading ? loadingMixin : null)};
 `
 
 export default Base

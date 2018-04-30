@@ -10,14 +10,6 @@ import Button from '../../../components/button'
 import ErrorBox from '../../../components/error'
 
 class FormModal extends Component {
-  constructor() {
-    super()
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleError = this.handleError.bind(this)
-  }
-
   state = {
     value: '',
     confirm: '',
@@ -26,13 +18,13 @@ class FormModal extends Component {
     error: null,
   }
 
-  handleChange(evt) {
+  handleChange = (evt) => {
     this.setState({
-      [evt.target.name]: evt.target.value
+      [evt.target.name]: evt.target.value,
     })
   }
 
-  async handleSubmit(evt) {
+  handleSubmit = async (evt) => {
     evt.preventDefault()
 
     if (this.props.confirm) {
@@ -45,7 +37,7 @@ class FormModal extends Component {
     }
 
     this.setState({
-      loading: true
+      loading: true,
     })
 
     try {
@@ -60,7 +52,7 @@ class FormModal extends Component {
         password: '',
         confirm: '',
         error: null,
-        loading: false
+        loading: false,
       })
 
       this.props.onClose()
@@ -69,7 +61,7 @@ class FormModal extends Component {
     }
   }
 
-  handleError({ message }) {
+  handleError = ({ message }) => {
     this.setState({
       error: message,
       loading: false,

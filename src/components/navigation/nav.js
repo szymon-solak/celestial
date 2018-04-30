@@ -11,6 +11,4 @@ const Nav = styled.nav`
   bottom: 0;
 `
 
-
-
 export default Nav

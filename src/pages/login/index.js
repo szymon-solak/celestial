@@ -17,14 +17,6 @@ import Spinner from '../../components/loading/spinner'
 import ErrorBox from '../../components/error'
 
 class Login extends Component {
-  constructor() {
-    super()
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleError = this.handleError.bind(this)
-  }
-
   state = {
     email: '',
     password: '',
@@ -44,13 +36,13 @@ class Login extends Component {
     }
   }
 
-  handleChange(evt) {
+  handleChange = (evt) => {
     this.setState({
       [evt.target.name]: evt.target.value
     })
   }
 
-  handleSubmit(evt) {
+  handleSubmit = (evt) => {
     evt.preventDefault()
 
     const {
@@ -68,7 +60,7 @@ class Login extends Component {
       .catch(this.handleError)
   }
 
-  handleError({ message }) {
+  handleError = ({ message }) => {
     this.setState({
       error: message,
       loading: false

@@ -2,7 +2,7 @@ import React from 'react'
 
 import Section from '../../components/section'
 
-const List = (props) => (
+const List = () => (
   <Section>List</Section>
 )
 

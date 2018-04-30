@@ -1,30 +1,31 @@
 import React from 'react'
 
-const withModal = (Component) => {
-  return class extends React.Component {
+const withModal = Component =>
+  // Return wrapped class
+  class Modal extends React.Component {
     constructor(props) {
       super(props)
-  
+
       this.showModal = this.showModal.bind(this)
       this.handleModalClose = this.handleModalClose.bind(this)
     }
-  
+
     state = {
-      show: false
+      show: false,
     }
-  
+
     showModal() {
       this.setState({
-        show: true
+        show: true,
       })
     }
-  
+
     handleModalClose() {
       this.setState({
-        show: false
+        show: false,
       })
     }
-  
+
     render() {
       return (
         <Component
@@ -36,6 +37,5 @@ const withModal = (Component) => {
       )
     }
   }
-}
 
 export default withModal

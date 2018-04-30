@@ -14,7 +14,7 @@ const defaultAvatarURL = 'default_avatar.png'
 const ChangeImage = ({
   show,
   showModal,
-  handleModalClose
+  handleModalClose,
 }) => (
   <Fragment>
     <FormModal
@@ -25,13 +25,13 @@ const ChangeImage = ({
       handleSubmit={async (photoURL) => {
         const user = firebase.auth().currentUser
         return user.updateProfile({
-          photoURL
+          photoURL,
         })
       }}
     />
     <Context.Consumer>
       {
-        (context) => (
+        context => (
           <Image
             icon={'true'}
             src={context.user.photoURL || defaultAvatarURL}

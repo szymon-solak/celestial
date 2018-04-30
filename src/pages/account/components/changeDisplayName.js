@@ -12,7 +12,7 @@ import firebase from '../../../services/firebase'
 const ChangeDisplayName = ({
   show,
   showModal,
-  handleModalClose
+  handleModalClose,
 }) => (
   <Fragment>
     <FormModal
@@ -23,7 +23,7 @@ const ChangeDisplayName = ({
       handleSubmit={async (name) => {
         const user = firebase.auth().currentUser
         return user.updateProfile({
-          displayName: name
+          displayName: name,
         })
       }}
     />
@@ -31,7 +31,7 @@ const ChangeDisplayName = ({
       <Text>Display name:</Text>
       <Context.Consumer>
         {
-          (context) => (
+          context => (
             <Text bold>{context.user.displayName}</Text>
           )
         }

@@ -7,9 +7,9 @@ const Text = styled.p`
   display: flex;
   align-items: center;
 
-  font-weight: ${props => props.bold ? 'bold' : 'normal'};
+  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
 
-  padding: ${props => props.spaced ? '0 .6em' : '0'};
+  padding: ${props => (props.spaced ? '0 .6em' : '0')};
 `
 
 export default Text

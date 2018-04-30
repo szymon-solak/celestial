@@ -7,19 +7,13 @@ import firebase from '../../services/firebase'
 import { Context } from '../../context'
 
 class Logout extends Component {
-  constructor() {
-    super()
-
-    this.handleClick = this.handleClick.bind(this)
-  }
-
   state = {
-    loading: false
+    loading: false,
   }
 
-  handleClick() {
+  handleClick = () => {
     this.setState({
-      loading: true
+      loading: true,
     })
 
     firebase
@@ -27,7 +21,7 @@ class Logout extends Component {
       .signOut()
       .then(() => {
         this.setState({
-          loading: false
+          loading: false,
         })
       })
       .catch(console.error)

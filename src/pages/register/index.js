@@ -14,35 +14,27 @@ import Spinner from '../../components/loading/spinner'
 import ErrorBox from '../../components/error'
 
 class Register extends Component {
-  constructor() {
-    super()
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleError = this.handleError.bind(this)
-  }
-
   state = {
     email: '',
     password: '',
     confirmPassword: '',
     error: null,
-    loading: false
+    loading: false,
   }
 
-  handleChange(evt) {
+  handleChange = (evt) => {
     this.setState({
-      [evt.target.name]: evt.target.value
+      [evt.target.name]: evt.target.value,
     })
   }
 
-  handleSubmit(evt) {
+  handleSubmit = (evt) => {
     evt.preventDefault()
 
     const {
       email,
       password,
-      confirmPassword
+      confirmPassword,
     } = this.state
 
     if (password !== confirmPassword) {
@@ -53,7 +45,7 @@ class Register extends Component {
     }
 
     this.setState({
-      loading: true
+      loading: true,
     })
 
     // On success user is signed in automatically
@@ -67,10 +59,10 @@ class Register extends Component {
       .catch(this.handleError)
   }
 
-  handleError({ message }) {
+  handleError = ({ message }) => {
     this.setState({
       error: message,
-      loading: false
+      loading: false,
     })
   }
 

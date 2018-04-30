@@ -18,7 +18,6 @@ const Header = () => (
       <UserBar />
       <Logout />
     </Row>
-    
   </HeaderContainer>
 )
 
