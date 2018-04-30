@@ -9,6 +9,8 @@ import { Context } from '../../../context'
 
 import firebase from '../../../services/firebase'
 
+const defaultAvatarURL = 'default_avatar.png'
+
 const ChangeImage = ({
   show,
   showModal,
@@ -32,7 +34,7 @@ const ChangeImage = ({
         (context) => (
           <Image
             icon={'true'}
-            src={context.user.photoURL}
+            src={context.user.photoURL || defaultAvatarURL}
           />
         )
       }

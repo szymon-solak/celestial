@@ -5,6 +5,8 @@ import Text from '../text'
 
 import { Context } from '../../context'
 
+const defaultAvatarURL = 'default_avatar.png'
+
 const UserBar = () => (
   <Context.Consumer>
     {
@@ -15,7 +17,7 @@ const UserBar = () => (
           <Fragment>
             <Image
               icon={'true'}
-              src={context.user.photoURL}
+              src={context.user.photoURL || defaultAvatarURL}
             />
             <Text spaced>{context.user.displayName}</Text>
           </Fragment>
