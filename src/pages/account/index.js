@@ -7,77 +7,29 @@ import {
   List,
   ListItem
 } from '../../components/list'
-import FormModal from './components/formModal'
 
 import ChangeDisplayName from './components/changeDisplayName'
 import ChangeEmail from './components/changeEmail'
+import ChangePassword from './components/changePassword'
 
 import { Context } from '../../context'
 
 import firebase from '../../services/firebase'
 
-const reauthenticate = (password) => {
-  const user = firebase.auth().currentUser
-
-  const credential = firebase.auth.EmailAuthProvider.credential(
-    user.email,
-    password
-  )
-
-  return user.reauthenticateWithCredential(credential)
-}
-
 class Account extends Component {
   constructor() {
     super()
 
-    this.showModal = this.showModal.bind(this)
-    this.handleModalClose = this.handleModalClose.bind(this)
     this.sendVerificationMail = this.sendVerificationMail.bind(this)
   }
 
   state = {
-    showModal: false,
-    modalToShow: null,
     buttons: {
       verification: {
         loading: false,
         success: false
       }
     }
-  }
-
-  passwordModal = () => (
-    <FormModal
-      show={this.state.showModal}
-      title='Change password'
-      onClose={this.handleModalClose}
-      label='New password:'
-      type='password'
-      confirm
-      confirmLabel='Confirm password:'
-      requireReauth
-      reauthenticate={reauthenticate}
-      handleSubmit={async (password) => {
-        const user = firebase.auth().currentUser
-
-        return user.updatePassword(password)
-      }}
-    />
-  )
-
-  showModal(modal) {
-    this.setState({
-      showModal: true,
-      modalToShow: modal
-    })
-  }
-
-  handleModalClose() {
-    this.setState({
-      showModal: false,
-      modalToShow: null,
-    })
   }
 
   sendVerificationMail() {
@@ -118,11 +70,6 @@ class Account extends Component {
   render() {
     return (
       <Section>
-        {
-          (this.state.showModal)
-            ? <this.state.modalToShow/>
-            : null
-        }
         <List title='Profile'>
           <ListItem>
             <ChangeDisplayName />
@@ -131,12 +78,7 @@ class Account extends Component {
             <ChangeEmail />
           </ListItem>
           <ListItem>
-            <Text>Password</Text>
-            <Button
-              onClick={() => this.showModal(this.passwordModal)}
-            >
-              Change
-            </Button>
+            <ChangePassword />
           </ListItem>
           <ListItem>
             <Text>Image here (no tag yet)</Text>
