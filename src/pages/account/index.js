@@ -11,6 +11,7 @@ import {
 import ChangeDisplayName from './components/changeDisplayName'
 import ChangeEmail from './components/changeEmail'
 import ChangePassword from './components/changePassword'
+import ChangeImage from './components/changeImage'
 import VerifyEmail from './components/verifyEmail'
 
 const Account = () => (
@@ -26,8 +27,7 @@ const Account = () => (
         <ChangePassword />
       </ListItem>
       <ListItem>
-        <Text>Image here (no tag yet)</Text>
-        <Button disabled>Change</Button>
+        <ChangeImage />
       </ListItem>
       <ListItem>
         <VerifyEmail />
