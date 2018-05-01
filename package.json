@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "firebase": "^4.12.1",
+    "is-url": "^1.2.4",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

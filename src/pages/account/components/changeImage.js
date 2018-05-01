@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import isUrl from 'is-url'
 
 import Image from '../../../components/image'
 import Button from '../../../components/button'
@@ -25,6 +26,11 @@ const ChangeImage = ({
       label='New image URL:'
       handleSubmit={async (photoURL) => {
         const user = firebase.auth().currentUser
+
+        if (!isUrl(photoURL)) {
+          throw new Error('Please provide a valid URL')
+        }
+
         return user.updateProfile({
           photoURL,
         })
