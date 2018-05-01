@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Backdrop from './backdrop'
 import ModalContainer from './modalContainer'
@@ -26,6 +27,16 @@ const Modal = (props) => {
       </ModalContainer>
     </Backdrop>
   )
+}
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired,
+  show: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]),
 }
 
 export default Modal

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 import Text from '../../../components/text'
 import Button from '../../../components/button'
@@ -40,5 +41,11 @@ const ChangeDisplayName = ({
     <Button onClick={showModal}>Change</Button>
   </Fragment>
 )
+
+ChangeDisplayName.propTypes = {
+  show: PropTypes.bool.isRequired,
+  showModal: PropTypes.func.isRequired,
+  handleModalClose: PropTypes.func.isRequired,
+}
 
 export default withModal(ChangeDisplayName)

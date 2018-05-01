@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 import Modal from '../../../components/modal'
 import {
@@ -30,7 +31,7 @@ class FormModal extends Component {
     if (this.props.confirm) {
       if (this.state.value !== this.state.confirm) {
         this.handleError({
-          message: 'The inputs do not match. Please try typing them again.'
+          message: 'The inputs do not match. Please try typing them again.',
         })
         return
       }
@@ -130,6 +131,19 @@ class FormModal extends Component {
       </Modal>
     )
   }
+}
+
+FormModal.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  show: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  confirm: PropTypes.bool,
+  confirmLabel: PropTypes.string,
+  requireReauth: PropTypes.bool,
+  reauthenticate: PropTypes.func,
 }
 
 export default FormModal

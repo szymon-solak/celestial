@@ -22,7 +22,7 @@ class Login extends Component {
     password: '',
     loggedIn: false,
     loading: false,
-    error: null
+    error: null,
   }
 
   componentDidMount() {
@@ -31,14 +31,14 @@ class Login extends Component {
 
     if (user) {
       this.setState({
-        loggedIn: false
+        loggedIn: false,
       })
     }
   }
 
   handleChange = (evt) => {
     this.setState({
-      [evt.target.name]: evt.target.value
+      [evt.target.name]: evt.target.value,
     })
   }
 
@@ -47,11 +47,11 @@ class Login extends Component {
 
     const {
       email,
-      password
+      password,
     } = this.state
 
     this.setState({
-      loading: true
+      loading: true,
     })
 
     firebase
@@ -63,7 +63,7 @@ class Login extends Component {
   handleError = ({ message }) => {
     this.setState({
       error: message,
-      loading: false
+      loading: false,
     })
   }
 
@@ -73,11 +73,11 @@ class Login extends Component {
         <Context.Consumer>
           {
             (context) => {
-              if (context.loggedIn) {
-                return (
-                  <Redirect to='/list' />
-                )
-              }
+              if (!context.loggedIn) return null
+
+              return (
+                <Redirect to='/list' />
+              )
             }
           }
         </Context.Consumer>

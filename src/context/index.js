@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import firebase from '../services/firebase'
 
@@ -7,7 +8,7 @@ const Context = React.createContext()
 class Provider extends Component {
   state = {
     loggedIn: false,
-    user: null
+    user: null,
   }
 
   componentWillMount() {
@@ -17,13 +18,12 @@ class Provider extends Component {
         if (user) {
           this.setState({
             loggedIn: true,
-            user
+            user,
           })
-
         } else {
           this.setState({
             loggedIn: false,
-            user: null
+            user: null,
           })
         }
       })
@@ -40,6 +40,10 @@ class Provider extends Component {
       </Context.Provider>
     )
   }
+}
+
+Provider.propTypes = {
+  children: PropTypes.element,
 }
 
 export {

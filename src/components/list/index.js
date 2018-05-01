@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 import ListContainer from './listContainer'
 import ListItem from './listItem'
@@ -16,8 +17,15 @@ const List = (props) => {
         {props.children}
       </ListContainer>
     </Fragment>
-    
   )
+}
+
+List.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]),
 }
 
 export {

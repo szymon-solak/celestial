@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 import Text from '../../../components/text'
 import Button from '../../../components/button'
@@ -35,5 +36,11 @@ const ChangePassword = ({
     <Button onClick={showModal}>Change</Button>
   </Fragment>
 )
+
+ChangePassword.propTypes = {
+  show: PropTypes.bool.isRequired,
+  showModal: PropTypes.func.isRequired,
+  handleModalClose: PropTypes.func.isRequired,
+}
 
 export default withModal(ChangePassword)

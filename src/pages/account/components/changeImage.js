@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 import Image from '../../../components/image'
 import Button from '../../../components/button'
@@ -42,5 +43,11 @@ const ChangeImage = ({
     <Button onClick={showModal}>Change</Button>
   </Fragment>
 )
+
+ChangeImage.propTypes = {
+  show: PropTypes.bool.isRequired,
+  showModal: PropTypes.func.isRequired,
+  handleModalClose: PropTypes.func.isRequired,
+}
 
 export default withModal(ChangeImage)
