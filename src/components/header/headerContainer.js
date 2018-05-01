@@ -9,6 +9,8 @@ const HeaderContainer = styled.header`
 
   display: flex;
   justify-content: space-between;
+
+  user-select: none;
 `
 
 export default HeaderContainer

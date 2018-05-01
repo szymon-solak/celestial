@@ -21,7 +21,7 @@ import Add from './pages/add'
 import Account from './pages/account'
 
 // Import default theme
-import tealDrop from './themes/teal-drop.js'
+import tealDrop from './themes/teal-drop'
 
 import { Provider } from './context'
 

@@ -7,7 +7,7 @@ const Form = styled.form`
 
   display: flex;
   flex-direction: column;
-  jusitify-content: center;
+  justify-content: center;
 `
 
 const Label = styled.label`
