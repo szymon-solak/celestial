@@ -69,12 +69,24 @@ class FormModal extends Component {
     })
   }
 
+  handleClose = () => {
+    this.setState({
+      value: '',
+      password: '',
+      confirm: '',
+      error: null,
+      loading: false,
+    })
+
+    this.props.onClose()
+  }
+
   render() {
     return (
       <Modal
         title={this.props.title}
         show={this.props.show}
-        onClose={this.props.onClose}
+        onClose={this.handleClose}
       >
         {
           (this.state.error)
