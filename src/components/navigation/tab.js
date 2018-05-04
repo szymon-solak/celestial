@@ -11,7 +11,7 @@ const Tab = styled(NavLink)`
   text-decoration: none;
 
   background: ${props => props.theme.background};
-  color: ${props => props.theme.fontColor}
+  color: ${props => props.theme.fontColor};
 
   transition: all .11s ease-in-out;
 
@@ -27,7 +27,7 @@ const Tab = styled(NavLink)`
     width: 100%;
     transform: scale(0);
     height: 2px;
-    background: ${props => props.theme.border}
+    background: ${props => props.theme.border};
     transition: transform .22s ease;
   }
 

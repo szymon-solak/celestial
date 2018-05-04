@@ -26,7 +26,6 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 
   animation: ${fadeIn} .3s linear forwards;
 `

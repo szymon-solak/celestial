@@ -8,6 +8,8 @@ const Title = styled.h1`
 
   display: flex;
   align-items: center;
+
+  justify-content: ${props => (props.center ? 'center' : 'start')};
 `
 
 export default Title

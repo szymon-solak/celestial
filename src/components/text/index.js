@@ -10,6 +10,8 @@ const Text = styled.p`
   font-weight: ${props => (props.bold ? 'bold' : 'normal')};
 
   padding: ${props => (props.spaced ? '.6em' : '0')};
+
+  justify-content: ${props => (props.center ? 'center' : 'start')};
 `
 
 export default Text
