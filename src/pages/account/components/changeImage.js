@@ -5,6 +5,7 @@ import isUrl from 'is-url'
 import Image from '../../../components/image'
 import Button from '../../../components/button'
 import FormModal from './formModal'
+
 import withModal from '../helpers/withModal'
 
 import { Context } from '../../../context'

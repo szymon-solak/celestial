@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 
 import Text from '../../../components/text'
 import Button from '../../../components/button'
+import Row from '../../../components/row'
 import FormModal from './formModal'
+
 import withModal from '../helpers/withModal'
 
 import { Context } from '../../../context'
@@ -28,16 +30,16 @@ const ChangeDisplayName = ({
         })
       }}
     />
-    <div>
+    <Row wrap={'true'}>
       <Text>Display name:</Text>
       <Context.Consumer>
         {
           context => (
-            <Text bold>{context.user.displayName}</Text>
+            <Text bold spaced>{context.user.displayName}</Text>
           )
         }
       </Context.Consumer>
-    </div>
+    </Row>
     <Button onClick={showModal}>Change</Button>
   </Fragment>
 )

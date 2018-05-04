@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Text from '../../../components/text'
 import Button from '../../../components/button'
+import Row from '../../../components/row'
 import FormModal from './formModal'
 
 import withModal from '../helpers/withModal'
@@ -32,16 +33,16 @@ const ChangeEmail = ({
         return user.updateEmail(email)
       }}
     />
-    <div>
+    <Row wrap={'true'}>
       <Text>Email:</Text>
       <Context.Consumer>
         {
           context => (
-            <Text bold>{context.user.email}</Text>
+            <Text bold spaced>{context.user.email}</Text>
           )
         }
       </Context.Consumer>
-    </div>
+    </Row>
     <Button onClick={showModal}>Change</Button>
   </Fragment>
 )
