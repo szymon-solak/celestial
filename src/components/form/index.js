@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
+import Select from './select'
+import Option from './option'
+
 const Form = styled.form`
   width: 100%;
   padding: 1em;
   //border: 1px solid ${props => props.theme.border};
 
   display: flex;
-  flex-direction: column;
+  flex-direction: ${props => (props.row ? 'row' : 'column')};
   justify-content: center;
 `
 
@@ -27,7 +30,6 @@ const Input = styled.input`
 const Submit = styled.input.attrs({
   type: 'submit',
 })`
-  width: 100%;
   padding: .6em;
   font-size: 1.2em;
   cursor: pointer;
@@ -48,5 +50,7 @@ export {
   Form,
   Label,
   Input,
-  Submit
+  Submit,
+  Select,
+  Option
 }

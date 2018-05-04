@@ -8,6 +8,8 @@ import {
   ListItem
 } from '../../components/list'
 
+import SelectTheme from './components/selectTheme'
+
 import ChangeDisplayName from './components/changeDisplayName'
 import ChangeEmail from './components/changeEmail'
 import ChangePassword from './components/changePassword'
@@ -16,6 +18,9 @@ import VerifyEmail from './components/verifyEmail'
 
 const Account = () => (
   <Section>
+    <List title='Prefrences'>
+      <SelectTheme />
+    </List>
     <List title='Profile'>
       <ListItem>
         <ChangeDisplayName />

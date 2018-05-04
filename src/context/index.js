@@ -6,7 +6,7 @@ import firebase from '../services/firebase'
 
 // Import themes
 import tealDrop from '../themes/teal-drop'
-import urban from '../themes/urban'
+import urbanScaffold from '../themes/urban-scaffold'
 
 const Context = React.createContext()
 
@@ -21,8 +21,8 @@ class Provider extends Component {
   }
 
   themes = {
-    'teal-drop': tealDrop,
-    urban,
+    'Teal Drop': tealDrop,
+    'Urban Scaffold': urbanScaffold,
   }
 
   componentWillMount() {
@@ -48,7 +48,7 @@ class Provider extends Component {
   }
 
   changeTheme = (themeName) => {
-    if (!this.themes.contains(themeName)) return
+    if (!Object.keys(this.themes).includes(themeName)) return
 
     this.setState({
       theme: this.themes[themeName],
@@ -58,7 +58,11 @@ class Provider extends Component {
   render() {
     return (
       <ThemeProvider theme={this.state.theme}>
-        <Context.Provider value={this.state}>
+        <Context.Provider value={{
+          ...this.state,
+          themes: this.themes,
+          changeTheme: this.changeTheme,
+        }}>
           {this.props.children}
         </Context.Provider>
       </ThemeProvider>
