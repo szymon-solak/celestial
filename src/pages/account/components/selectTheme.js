@@ -2,22 +2,27 @@ import React, { Fragment } from 'react'
 
 import Text from '../../../components/text'
 import {
-  Form,
   Select,
-  Option,
-  Submit
+  Option
 } from '../../../components/form'
+
+import { saveTheme } from '../../../services/storage'
 
 import { Context } from '../../../context'
 
 const SelectTheme = () => (
   <Fragment>
     <Text>Select theme:</Text>
-    <Form row>
       <Context.Consumer>
         {
           context =>
-            <Select onChange={evt => context.changeTheme(evt.target.value)}>
+            <Select
+              onChange={(evt) => {
+                context.changeTheme(evt.target.value)
+                saveTheme(evt.target.value)
+              }}
+              value={context.themeName}
+            >
             {
               Object.keys(context.themes).map((themeName, idx) => (
                 <Option
@@ -31,8 +36,6 @@ const SelectTheme = () => (
             </Select>
         }
       </Context.Consumer>
-      <Submit value='Save'/>
-    </Form>
   </Fragment>
 )
 

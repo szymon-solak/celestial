@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
 
 import firebase from '../services/firebase'
+import { loadTheme } from '../services/storage'
 
 // Import themes
 import tealDrop from '../themes/teal-drop'
@@ -18,6 +19,7 @@ class Provider extends Component {
     // @TODO - Add an options to change theme and
     // save it somewhere (firebase/localstorage)
     theme: tealDrop,
+    themeName: 'Teal Drop',
   }
 
   themes = {
@@ -26,6 +28,17 @@ class Provider extends Component {
   }
 
   componentWillMount() {
+    const themeName = loadTheme()
+
+    const theme = this.themes[themeName]
+
+    if (theme) {
+      this.setState({
+        theme,
+        themeName,
+      })
+    }
+
     this.unsubscribe = firebase
       .auth()
       .onAuthStateChanged((user) => {
@@ -52,6 +65,7 @@ class Provider extends Component {
 
     this.setState({
       theme: this.themes[themeName],
+      themeName,
     })
   }
 
