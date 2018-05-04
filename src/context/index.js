@@ -15,9 +15,6 @@ class Provider extends Component {
   state = {
     loggedIn: false,
     user: null,
-    // Default theme
-    // @TODO - Add an options to change theme and
-    // save it somewhere (firebase/localstorage)
     theme: tealDrop,
     themeName: 'Teal Drop',
   }
