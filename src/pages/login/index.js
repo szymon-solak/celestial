@@ -20,20 +20,8 @@ class Login extends Component {
   state = {
     email: '',
     password: '',
-    loggedIn: false,
     loading: false,
     error: null,
-  }
-
-  componentDidMount() {
-    // Check if user is logged in already
-    const user = firebase.auth().currentUser
-
-    if (user) {
-      this.setState({
-        loggedIn: false,
-      })
-    }
   }
 
   handleChange = (evt) => {
