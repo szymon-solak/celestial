@@ -11,6 +11,9 @@
     "react-scripts": "1.1.4"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/react-fontawesome": "^0.0.20",
     "firebase": "^4.12.1",
     "is-url": "^1.2.4",
     "prop-types": "^15.6.1",
