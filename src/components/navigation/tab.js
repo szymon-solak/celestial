@@ -5,8 +5,13 @@ const Tab = styled(NavLink)`
   position: relative;
   flex: 1;
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1.2em;
   padding: .6em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   text-decoration: none;
 
@@ -50,9 +55,13 @@ const Tab = styled(NavLink)`
   }
 
   &.active::after {
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 12px solid ${props => props.theme.border};
+    border-left: .5em solid transparent;
+    border-right: .5em solid transparent;
+    border-top: .5em solid ${props => props.theme.border};
+  }
+
+  @media (min-width: 40em) {
+    flex-direction: row;
   }
 `
 
