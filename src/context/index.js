@@ -12,16 +12,27 @@ import urbanScaffold from '../themes/urban-scaffold'
 const Context = React.createContext()
 
 class Provider extends Component {
+  themes = {
+    'Teal Drop': tealDrop,
+    'Urban Scaffold': urbanScaffold,
+  }
+
+  changeTheme = (themeName) => {
+    if (!Object.keys(this.themes).includes(themeName)) return
+
+    this.setState({
+      theme: this.themes[themeName],
+      themeName,
+    })
+  }
+
   state = {
     loggedIn: false,
     user: null,
     theme: tealDrop,
+    themes: this.themes,
     themeName: 'Teal Drop',
-  }
-
-  themes = {
-    'Teal Drop': tealDrop,
-    'Urban Scaffold': urbanScaffold,
+    changeTheme: this.changeTheme,
   }
 
   componentWillMount() {
@@ -57,23 +68,10 @@ class Provider extends Component {
     this.unsubscribe()
   }
 
-  changeTheme = (themeName) => {
-    if (!Object.keys(this.themes).includes(themeName)) return
-
-    this.setState({
-      theme: this.themes[themeName],
-      themeName,
-    })
-  }
-
   render() {
     return (
       <ThemeProvider theme={this.state.theme}>
-        <Context.Provider value={{
-          ...this.state,
-          themes: this.themes,
-          changeTheme: this.changeTheme,
-        }}>
+        <Context.Provider value={this.state}>
           {this.props.children}
         </Context.Provider>
       </ThemeProvider>
