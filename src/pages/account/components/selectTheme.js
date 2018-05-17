@@ -1,10 +1,7 @@
 import React, { Fragment } from 'react'
 
 import Text from '../../../components/text'
-import {
-  Select,
-  Option
-} from '../../../components/form'
+import { Select, Option } from '../../../components/select'
 
 import { saveTheme } from '../../../services/storage'
 
@@ -15,25 +12,21 @@ const SelectTheme = () => (
     <Text spaced>Select theme:</Text>
     <Context.Consumer>
       {
-        context =>
+        context => (
           <Select
-            onChange={(evt) => {
-              context.changeTheme(evt.target.value)
-              saveTheme(evt.target.value)
+            default={context.themeName}
+            onChange={(newTheme) => {
+              context.changeTheme(newTheme)
+              saveTheme(newTheme)
             }}
-            value={context.themeName}
           >
-          {
-            Object.keys(context.themes).map((themeName, idx) => (
-              <Option
-                key={idx}
-                value={themeName}
-              >
+            {Object.keys(context.themes).map((themeName, idx) => (
+              <Option key={idx} value={themeName}>
                 {themeName}
               </Option>
-            ))
-          }
+            ))}
           </Select>
+        )
       }
     </Context.Consumer>
   </Fragment>

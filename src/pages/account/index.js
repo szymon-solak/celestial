@@ -18,9 +18,6 @@ import VerifyEmail from './components/verifyEmail'
 
 const Account = () => (
   <Section>
-    <List title='Prefrences'>
-      <SelectTheme />
-    </List>
     <List title='Profile'>
       <ListItem>
         <ChangeDisplayName />
@@ -51,6 +48,9 @@ const Account = () => (
         <Text>Import entries</Text>
         <Button disabled>Import</Button>
       </ListItem>
+    </List>
+    <List title='Preferences'>
+      <SelectTheme />
     </List>
   </Section>
 )
