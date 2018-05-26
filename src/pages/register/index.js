@@ -40,7 +40,7 @@ class Register extends Component {
 
     if (password !== confirmPassword) {
       this.handleError({
-        message: 'Passwords do not match, please try entering them again.'
+        message: 'Passwords do not match, please try entering them again.',
       })
       return
     }
@@ -99,7 +99,7 @@ class Register extends Component {
           {
             (this.state.error)
               ? <ErrorBox>
-                {this.state.error}
+                  {this.state.error}
                 </ErrorBox>
               : null
           }
