@@ -10,7 +10,7 @@ const Wrapper = styled.article`
 `
 
 const TitledTextArea = ({ title, value, onChange }) => (
-  <Wrapper wrap={'true'}>
+  <Wrapper>
     <Title>{title}</Title>
     <TextArea onChange={onChange} value={value} />
   </Wrapper>

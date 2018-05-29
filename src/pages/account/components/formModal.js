@@ -106,6 +106,7 @@ class FormModal extends Component {
                       type='password'
                       onChange={this.handleChange}
                       value={this.state.password}
+                      autoFocus={this.props.requireReauth}
                     />
                   </Fragment>
                 )
@@ -117,6 +118,7 @@ class FormModal extends Component {
             type={this.props.type || 'text'}
             onChange={this.handleChange}
             value={this.state.value}
+            autoFocus={!this.props.requireReauth}
           />
           {
             (this.props.confirm)

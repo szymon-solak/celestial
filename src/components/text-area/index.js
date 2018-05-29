@@ -6,6 +6,7 @@ const StyledTextArea = styled(TextArea)`
   padding: 1em .6em;
   font-size: 1.4em;
 
+  color: ${props => props.theme.fontColor};
   background: ${props => props.theme.background};
   resize: none;
   outline: none;

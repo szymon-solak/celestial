@@ -78,6 +78,7 @@ class Login extends Component {
             placeholder='john@smith.com'
             onChange={this.handleChange}
             value={this.state.email}
+            autoFocus
           />
           <Label>Password:</Label>
           <Input
