@@ -1,8 +1,6 @@
 import { injectGlobal } from 'styled-components'
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Tajawal:400,700');
-
   *,
   *::before,
   *::after {
@@ -12,7 +10,7 @@ injectGlobal`
   }
 
   body {
-    font-family: 'Tajawal', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.5;
     overflow-x: hidden;
   }
