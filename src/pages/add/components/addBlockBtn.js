@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import FontAwesome from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
 
+import Row from '../../../components/row'
 import BaseBtn from '../../../components/button/base'
 
 const Button = BaseBtn.extend`
@@ -21,9 +22,11 @@ const Button = BaseBtn.extend`
 `
 
 const AddBlockBtn = ({ onClick }) => (
-  <Button onClick={onClick}>
-    <FontAwesome icon={faPlus} />
-  </Button>
+  <Row flex='0'>
+    <Button onClick={onClick}>
+      <FontAwesome icon={faPlus} />
+    </Button>
+  </Row>
 )
 
 AddBlockBtn.propTypes = {

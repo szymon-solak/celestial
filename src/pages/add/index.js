@@ -5,6 +5,7 @@ import Title from '../../components/title'
 import TitledTextArea from '../../components/text-area/titledTextArea'
 
 import AddBlockBtn from './components/addBlockBtn'
+import BlockTypeSelect from './components/blockTypeSelect'
 
 const today = () => {
   const now = new Date()
@@ -18,6 +19,7 @@ const today = () => {
 class Add extends Component {
   state = {
     title: today(),
+    showTypes: false,
     blocks: [],
   }
 
@@ -29,7 +31,17 @@ class Add extends Component {
   }
 
   handleAddClick = () => {
-    console.log('Add')
+    this.setState({
+      showTypes: true,
+    })
+  }
+
+  handleTypeSelection = (type) => {
+    this.setState({
+      showTypes: false,
+    })
+
+    console.log(type)
   }
 
   render() {
@@ -41,7 +53,11 @@ class Add extends Component {
           value={this.state.title}
           onChange={this.setTitle}
         />
-        <AddBlockBtn onClick={this.handleAddClick}/>
+        {
+          (this.state.showTypes)
+            ? <BlockTypeSelect onTypeClick={this.handleTypeSelection}/>
+            : <AddBlockBtn onClick={this.handleAddClick}/>
+        }
       </Section>
     )
   }
