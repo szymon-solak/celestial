@@ -9,20 +9,24 @@ import {
 } from '../../../components/select'
 
 const appear = keyframes`
-  from {
-    opacity: 0;
+  0% {
+    transform: translateX(-120%)
   }
 
-  to {
-    opacity: 1;
+  90% {
+    transform: translateX(-15%)
+  }
+
+  100% {
+    transform: translateX(0)
   }
 `
 
 const Type = Option.extend`
   color: ${props => props.theme.fontFocus};
   background: ${props => props.theme.focus};
-  opacity: 0;
 
+  transform: translateX(-120%);
   animation: ${appear} .35s ease forwards;
   animation-delay: ${props => props.delay}s;
 `
