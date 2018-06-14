@@ -6,6 +6,7 @@ import TitledTextArea from '../../components/text-area/titledTextArea'
 
 import AddBlockBtn from './components/addBlockBtn'
 import BlockTypeSelect from './components/blockTypeSelect'
+import Block from './components/block'
 
 const today = () => {
   const now = new Date()
@@ -36,12 +37,46 @@ class Add extends Component {
     })
   }
 
+  appendBlock = (type) => {
+    this.setState((state) => {
+      if (state.blocks.length) {
+        const lastIndex = state.blocks[state.blocks.length - 1].index
+        return {
+          blocks: state.blocks.concat({
+            type,
+            value: '',
+            index: lastIndex + 1,
+          }),
+        }
+      }
+
+      return {
+        blocks: state.blocks.concat({
+          type,
+          value: '',
+          index: 0,
+        }),
+      }
+    })
+  }
+
+  updateBlock = index => (evt) => {
+    const value = evt.target.value
+
+    const blocks = this.state.blocks.slice()
+    blocks[index].value = value
+
+    this.setState({
+      blocks,
+    })
+  }
+
   handleTypeSelection = (type) => {
     this.setState({
       showTypes: false,
     })
 
-    console.log(type)
+    this.appendBlock(type)
   }
 
   render() {
@@ -49,10 +84,21 @@ class Add extends Component {
       <Section>
         <Title center>Add a new entry</Title>
         <TitledTextArea
-          title='Title'
+          title='Entry Title'
           value={this.state.title}
           onChange={this.setTitle}
         />
+        {
+          this.state.blocks.map(block => (
+            <Block
+              type={block.type}
+              key={block.index}
+              index={block.index}
+              value={this.state.blocks[block.index].value}
+              onChange={this.updateBlock(block.index)}
+            />
+          ))
+        }
         {
           (this.state.showTypes)
             ? <BlockTypeSelect onTypeClick={this.handleTypeSelection}/>
