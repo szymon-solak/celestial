@@ -5,21 +5,21 @@ import {
   Route
 } from 'react-router-dom'
 
-import './globalStyles'
-import registerServiceWorker from './registerServiceWorker'
+import Container from 'components/container'
+import Header from 'components/header'
+import Navigation from 'components/navigation'
+import PrivateRoute from 'components/private-route'
 
-import Container from './components/container'
-import Header from './components/header'
-import Navigation from './components/navigation'
-import PrivateRoute from './components/private-route'
-
-import Login from './pages/login'
-import Register from './pages/register'
-import List from './pages/list'
-import Add from './pages/add'
-import Account from './pages/account'
+import Login from 'pages/login'
+import Register from 'pages/register'
+import List from 'pages/list'
+import Add from 'pages/add'
+import Account from 'pages/account'
 
 import { Provider } from './context'
+
+import './globalStyles'
+import registerServiceWorker from './registerServiceWorker'
 
 const App = () => (
   <Provider>
