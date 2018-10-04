@@ -8,6 +8,7 @@ import { loadTheme } from '../services/storage'
 // Import themes
 import tealDrop from '../themes/teal-drop'
 import urbanScaffold from '../themes/urban-scaffold'
+import slyFox from '../themes/sly-fox'
 
 const Context = React.createContext()
 
@@ -15,6 +16,7 @@ class Provider extends Component {
   themes = {
     'Teal Drop': tealDrop,
     'Urban Scaffold': urbanScaffold,
+    'Sly Fox': slyFox,
   }
 
   changeTheme = (themeName) => {
